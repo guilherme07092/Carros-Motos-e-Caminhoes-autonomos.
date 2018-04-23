@@ -4,6 +4,13 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+* Main.java - Usada para a criação dos obejtos e das condições .
+* @author Guilherme Bazzo
+* @version 1.0
+*/
+
+
 public class Main {
 	public static void main(String[]args) {
 	
@@ -12,20 +19,26 @@ public class Main {
 		Mundo mapa = new Mundo();
 		
 		
-		//Cria 10 carros iniciais 
+		/**
+		 * Cria 10 carros iniciais 
+		 */
 		ArrayList <Carro> vei_Carro = new ArrayList<>();
 		for(int i = 0; i < 10;i++) {
 			vei_Carro.add(new Carro(generator.nextInt(30),generator.nextInt(60),2));	
 		}
 		
 		
-		//Cria 10 motos iniciais 
+		/**
+		 * Cria 10 motos iniciais 
+		 */
 		ArrayList <Moto> vei_Moto = new ArrayList<>();
 		for(int i = 0; i < 10;i++) {
 			vei_Moto.add(new Moto(generator.nextInt(30),generator.nextInt(60),3));	
 		}
 		
-		//Cria 10 caminhões iniciais 
+		/**Cria 10 caminhões iniciais 
+		 * 
+		 */
 		ArrayList <Caminhao> vei_Caminhao = new ArrayList<>();
 		for(int i = 0; i < 10;i++) {
 			vei_Caminhao.add(new Caminhao(generator.nextInt(30),generator.nextInt(60),1));	
@@ -34,34 +47,46 @@ public class Main {
 		
 		Timer timer = new Timer();
 		
-		//define o tempo de atulização
+		/**
+		 * define o tempo de atulização
+		 */
 		final long SEGUNDOS = (250 * 1);
 		
 		TimerTask tarefa = new TimerTask(){
 			@Override
 			public void run() {
 
-				//Desenha Mundo
+				/**
+				 * Desenha Mundo
+				 */
 				mapa.desenhaMundo(vei_Moto,vei_Carro,vei_Caminhao);
 				
 				
-				//Movimenta	o Carro
+				/**
+				 * Movimenta	o Carro
+				 */
 				for(int i = 0 ; i < vei_Carro.size(); i++) {					
 					vei_Carro.get(i).move(2);					
 				};
 				
-				//Movimenta	o Moto
+				/**
+				 * Movimenta	o Moto
+				 */
 				for(int i = 0 ; i < vei_Moto.size(); i++) {					
 					vei_Moto.get(i).move(3);					
 				};
 				
-				//Movimenta	o Caminhão
+				/**
+				 * Movimenta	o Caminhão
+				 */
 				for(int i = 0 ; i < vei_Caminhao.size(); i++) {					
 					vei_Caminhao.get(i).move(1);					
 				};
 				
 				
-				//Verifica colisão entre carro e moto
+				/**
+				 * Verifica colisão entre carro e moto
+				 */
 				for(int i = 0; i < vei_Carro.size(); i++) {
 					for(int j = 0; j < vei_Moto.size(); j++) {
 						if(vei_Carro.get(i).getX() == vei_Moto.get(j).getX() && vei_Carro.get(i).getY() == vei_Moto.get(j).getY()) {				
@@ -70,7 +95,9 @@ public class Main {
 					};
 				};	
 				
-				//Verifica colisão entre Caminhão e moto
+				/**
+				 * Verifica colisão entre Caminhão e moto
+				 */
 				for(int i = 0; i < vei_Caminhao.size(); i++) {
 					for(int j = 0; j < vei_Moto.size(); j++) {
 						if(vei_Caminhao.get(i).getX() == vei_Moto.get(j).getX() && vei_Caminhao.get(i).getY() == vei_Moto.get(j).getY()) {				
@@ -79,7 +106,9 @@ public class Main {
 					};
 				};	
 				
-				//Verifica colisão entre Caminhão e carro
+				/**
+				 * Verifica colisão entre Caminhão e carro
+				 */
 				for(int i = 0; i < vei_Caminhao.size(); i++) {
 					for(int j = 0; j < vei_Carro.size(); j++) {
 						if(vei_Caminhao.get(i).getX() == vei_Carro.get(j).getX() && vei_Caminhao.get(i).getY() == vei_Carro.get(j).getY()) {				
@@ -88,7 +117,9 @@ public class Main {
 					};
 				};
 				
-				//Verifica colisão entre carro e carro 
+				/**
+				 * Verifica colisão entre carro e carro 
+				 */
 				for(int i = 0; i < vei_Carro.size(); i++) {
 					for(int j = 0; j < vei_Carro.size(); j++) {
 						if(i != j) {	
@@ -100,7 +131,9 @@ public class Main {
 					};
 				};
 				
-				//Verifica colisão entre moto e moto 
+				/**
+				 * Verifica colisão entre moto e moto 
+				 */
 				for(int i = 0; i < vei_Moto.size(); i++) {
 					for(int j = 0; j < vei_Moto.size(); j++) {
 						if(i != j) {	
@@ -112,7 +145,9 @@ public class Main {
 					};
 				};
 				
-				//Verifica colisão entre caminhão e caminhão 
+				/**
+				 * Verifica colisão entre caminhão e caminhão 
+				 */
 				for(int i = 0; i < vei_Caminhao.size(); i++) {
 					for(int j = 0; j < vei_Caminhao.size(); j++) {
 						if(i != j) {	
@@ -124,9 +159,14 @@ public class Main {
 					};
 				};
 				
+				/**
+				 * Gera um mundo sem veículos para a comparação
+				 */
 				mapa.mundo();
 				
-				//Verifica se o carro tá na fábrica , se tiver cria outro objeto
+				/**
+				 * Verifica se o carro tá na fábrica , se tiver cria outro objeto
+				 */
 				for(int i = 0;i<vei_Carro.size();i++) {
 					if(vei_Carro.get(i).getFabrica() == false) {
 						if(mapa.verificaoPos(vei_Carro.get(i).getX(), vei_Carro.get(i).getY()) == 2) {
@@ -144,7 +184,9 @@ public class Main {
 					}
 				};
 				
-				//Verifica se o caminhão tá na fábrica , se tiver cria outro objeto
+				/**
+				 * Verifica se o caminhão tá na fábrica , se tiver cria outro objeto
+				 */
 				for(int i = 0;i<vei_Caminhao.size();i++) {
 					if(vei_Caminhao.get(i).getFabrica() == false) {
 						if(mapa.verificaoPos(vei_Caminhao.get(i).getX(), vei_Caminhao.get(i).getY()) == 2) {
@@ -162,7 +204,9 @@ public class Main {
 					}
 				};
 				
-				//Verifica se a moto tá na fábrica, se tiver cria outro objeto
+				/**
+				 * Verifica se a moto tá na fábrica, se tiver cria outro objeto
+				 */
 				for(int i = 0;i<vei_Moto.size();i++) {
 					if(vei_Moto.get(i).getFabrica() == false) {
 						if(mapa.verificaoPos(vei_Moto.get(i).getX(), vei_Moto.get(i).getY()) == 2) {
@@ -180,7 +224,9 @@ public class Main {
 					}
 				};
 				
-				//Contador de Objetos
+				/**
+				 * Contador de Objetos
+				 */
 				System.out.printf("Carro: %d\n",vei_Carro.size()); 
 				System.out.printf("Moto: %d\n",vei_Moto.size());
 				System.out.printf("Caminhao: %d\n",vei_Caminhao.size());
@@ -188,7 +234,7 @@ public class Main {
 				
 			};
 		};
-	
+			
 		 while(vei_Caminhao.size() != 0 ) {
 			
 			timer.scheduleAtFixedRate(tarefa, 0, SEGUNDOS);				

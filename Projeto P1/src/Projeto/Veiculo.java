@@ -1,34 +1,65 @@
 package Projeto;
 import java.util.Random;
 
+/**
+* Veiculo.java - Essa classe é a base das classes Carro, Caminhão e Moto.
+*/
 public class Veiculo {
 
+	/**
+	 * Construtor do Veículo
+	 * @param x2 posição x dos veículos  
+	 * @param y2 posição y dos veículos  
+	 * @param velocidade velocidade dos veículos  
+	 */
 	public Veiculo(int x2, int y2,int velocidade) {
 		x = x2;
 		y = y2;
 	}
 	
+	/**
+	 * Construtor sem Parâmetro do Veículo
+	 */
 	public Veiculo() {		
 	};
 	
+	/**
+	 * Esse método pega a posição x dos veículos e retorna para ser usado
+	 * @return Retorna a posição x dos veículos
+	 */
 	public int getX() {
 		return x;
 	}
 	
+	/**
+	 * Esse método pega a posição y dos veículos e retorna para ser usado
+	 * @return Retorna a posição y dos veículos
+	 */
 	public int getY() {
 		return y;
 	}
 	
+	/**
+	 * Esse método verifica se o objeto está na fábrica ou não
+	 * @return retorna se o objeto está na fábrica ou não
+	 */
 	public Boolean getFabrica() {
 		
 		return fabrica;
 	};
 	
+	/**
+	 * Muda a verificação da fábrica
+	 * @param ver Essa parâmetro serve para mudar se o veículo estiver na fábrica ou não
+	 */
 	public void setFabrica(Boolean ver){	
 		fabrica = ver;	
 	}
 	
-	
+	/**
+	 * Faz os objetos andar aleatoriamente 
+	 * @param velocidade define a velocidade dos objetos
+	 */
 	public void move(int velocidade){		
 	
 		if(velocidade == 1) {
