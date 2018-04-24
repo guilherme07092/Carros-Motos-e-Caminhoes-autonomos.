@@ -6,7 +6,7 @@ import java.util.TimerTask;
 
 /**
 * Main.java - Usada para a criação dos obejtos e das condições .
-* @author Guilherme Bazzo
+* @author Guilherme Bazzo R.A 22117009-5
 * @version 1.0
 */
 
